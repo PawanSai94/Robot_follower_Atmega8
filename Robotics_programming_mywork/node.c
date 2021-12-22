@@ -1,0 +1,1 @@
+<AVRWorkspace><IOSettings><CurrentRegisters/></IOSettings><part name="ATMEGA8"/><Files><File00000 Name="linerobsap.c" Position="197 71 1026 492" LineCol="57 1" State="Maximized"/></Files></AVRWorkspace>

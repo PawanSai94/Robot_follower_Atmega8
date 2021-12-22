@@ -1,0 +1,1 @@
+<AVRWorkspace><IOSettings><CurrentRegisters/></IOSettings><part name="ATMEGA8"/><Files><File00000 Name="F:\grid3.c" Position="203 103 940 400" LineCol="25 0"/></Files></AVRWorkspace>

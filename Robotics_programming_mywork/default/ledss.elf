@@ -1,0 +1,25 @@
+if((ls==0b0000000)&&(rs==0b0000000))
+{
+for(count=0;count<=1;count++)
+{
+if (count==0)
+PORTB = 0b00000010;
+else if (count==1)
+PORTB = 0b00010000;
+}
+}
+
+
+
+
+
+if((ls==0b0000000)&&(rs==0b0000000))
+{
+for(count=0;count<=1;count++)
+{
+if (count==0)
+PORTB = 0b00000010;
+else 
+PORTB = 0b00010000;
+}
+}

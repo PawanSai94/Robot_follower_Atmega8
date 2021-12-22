@@ -1,0 +1,58 @@
+#define F_CPU 120000000UL
+#include<avr/io.h>
+#include<util/delay.h>
+#include"robosapiens.c"
+int main(void)
+
+
+{
+DDRB = 0b00011110; // set DDRB
+DDRC = 0b1110110; // set DDRC 
+int ls,rs,count; // initializing count;ls=left sensor; rs= right sensor
+while(1)
+{
+for(count=0;count<=3;count++)
+{
+ls = (PINC & 0b0000001); // declaration of left sensor
+rs = (PINC & 0b0001000); // declaration of right sensor
+if ((ls==0b0000001)&&(rs==0b0001000))
+{
+
+PORTB = 0b00010010; // forward condition
+
+}
+if ((ls==0b0000000)&&(rs==0b0000000)&&(count==0)) // for first node, count = 0
+{
+PORTB = 0b00010000; // left turn
+
+ // increment count
+wait(.8);
+PORTB = 0b00010010;
+wait(.5);
+}
+
+
+if ((ls==0b0000000)&&(rs==0b0000000)&&(count==1)) // for second node, count = 1
+{
+PORTB = 0b00000010; // right turn
+
+ // increment count
+wait(2);
+}
+if ((ls==0b0000000)&&(rs==0b0000000)&&(count==2)) // for second node, count = 1
+{
+PORTB = 0b00010010; // straight turn
+
+  // increment count
+wait(2);
+}
+if ((ls==0b0000000)&&(rs==0b0000000)&&(count==3)) // for second node, count = 1
+{
+PORTB = 0b00000010; // right turn
+
+  // increment count
+wait(2);
+}
+}
+}
+}

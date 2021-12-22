@@ -1,0 +1,74 @@
+#include <stdio.h>
+
+/*
+This struct is a container for maintaining the current state of the application.
+If you need to maintain anything else apart from the current node that 
+needs to be available, add it to the struct. What is stored here is up to you.
+*/
+typedef struct AppStateStruct {
+    int node;
+}AppState;
+
+/*
+    updateNode should be the ONLY place where the node is updated. 
+    This function updates the node and also calls the required functions based on the node value.
+    So whenever you need to change the node, call this function with the appropriate node value.
+    This function is a rudimentary example of the Publish-Subscribe Pattern (Google for it)
+*/
+
+void updateNode(AppState state, int newNode) {
+    
+    state.node = newNode;
+
+    switch(newNode) {
+        case 0: {
+            printf("At node 0\n");
+            /*
+            Call any function that needs to be called at 0 here.
+            Similarly for other cases    
+            */
+            break;
+        }
+
+        case 1: {
+            printf("At node 1\n");
+            break;
+        }
+
+        case 2: {
+            printf("At node 2\n");
+            break;
+        }
+
+        case 3: {
+            printf("At node 3\n");
+            break;
+            
+        }
+
+        default: {
+            printf("Warning: newNode is set to %d. No cases were matched\n", newNode);
+        }
+    }
+
+}
+
+/*
+I've made the state struct global. In general, it's not a good practise to make a 
+variable global. But for single-threaded microcontroller programs, it's OK. Especially 
+during initial days. With time, you'll learn better ways to pass around information between 
+various components.
+*/
+
+AppState appState; 
+
+int main(int argc, char **argv) {
+    
+    updateNode(appState, 1);
+    updateNode(appState, 2);
+    updateNode(appState, 3);
+    updateNode(appState, 1); 
+
+    return 0;
+}
+

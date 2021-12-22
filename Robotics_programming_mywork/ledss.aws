@@ -1,0 +1,52 @@
+#include<avr/io.h>
+#include<util/delay.h>
+void main()
+{
+DDRB = 0b00011110; //set DDRB
+DDRC = 0b1110110; // set DDRC
+int ls,rs,count;
+for (count =0;count<=2;) // count = 0,1,2 i.e., I have 3 NODES
+{
+ls = (PINC & 0b0000001); // set left sensor
+rs = (PINC & 0b0001000); // set right sensor
+{ 
+if((ls==0b0000000)&&(rs=0000000)&&(count == 0)) // for the first node, count =0
+{
+PORTB = 0b00000010; // left turn
+_delay_ms(1500);
+count = count+1; // increment count
+}
+else
+{
+PORTB = 0b00010010; // else go straight
+}
+}
+
+{ 
+if((ls==0b0000000)&&(rs=0000000)&&(count == 1)) // for the second node, count =1
+{
+PORTB = 0b00010000; // right turn
+_delay_ms(1500);
+count = count+1; // increment count
+}
+else
+{
+PORTB = 0b00010010; // else go straight
+}
+
+}
+{ 
+if((ls==0b0000000)&&(rs=0000000)&&(count == 2)) // for the third node, count =2
+{
+PORTB = 0b00010000; // right turn
+_delay_ms(1500);
+count = count+1; // increment count
+}
+else
+{
+PORTB = 0b00010010; // else go straight
+}
+
+}
+}
+}
